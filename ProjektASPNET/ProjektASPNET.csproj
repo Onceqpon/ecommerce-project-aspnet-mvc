@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\Manufacturers\" />
+    <Folder Include="Images\Products\" />
+  </ItemGroup>
+
 </Project>

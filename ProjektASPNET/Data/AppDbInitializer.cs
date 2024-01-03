@@ -24,21 +24,21 @@ namespace ProjektASPNET.Data
                         new Manufacturer()
                         {
                             Name = "Microsoft",
-                            CompanyLogoURL = "https://commons.wikimedia.org/wiki/File:Microsoft_logo.jpg",
+                            CompanyLogoURL = "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_logo.jpg",
                             Description = "Amerykańskie przedsiębiorstwo informatyczne. Najbardziej znane jako producent systemów operacyjnych MS-DOS, Microsoft Windows i oprogramowania biurowego Microsoft Office. Spółka publiczna z siedzibą w Redmond w stanie Waszyngton.",
 
                         },
                         new Manufacturer()
                         {
                             Name = "Sony",
-                            CompanyLogoURL = "https://commons.wikimedia.org/wiki/File:Sony_logos.JPG",
+                            CompanyLogoURL = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Sony_logos.JPG",
                             Description = "Japoński producent elektroniki użytkowej i zarazem jeden z największych światowych producentów w tej branży, założony 7 maja 1946 roku przez Masaru Ibukę i Akio Moritę w Tokio jako Tokyo Communication Industry.",
 
                         },
                         new Manufacturer()
                         {
                             Name = "Samsung",
-                            CompanyLogoURL = "https://pl.wikipedia.org/wiki/Plik:Logo_samsung_5.jpg",
+                            CompanyLogoURL = "https://upload.wikimedia.org/wikipedia/commons/6/6e/Logo_samsung_5.jpg",
                             Description = "Grupa biznesowa Samsung to potężny konglomerat, działający w przemyśle elektronicznym, samochodowym, chemicznym, lotniczym, tekstylnym, spożywczym, a także w hotelarstwie, handlu, parkach rozrywki oraz projektowaniu i budowaniu wysokościowców. Swoją siedzibę ma w mieście Suwon, potocznie zwanym „miastem Samsunga.”",
 
                         }
@@ -58,7 +58,7 @@ namespace ProjektASPNET.Data
                             ImageURL = "https://th.bing.com/th/id/OIP.zi801rYOccfivC3VRbf2WgAAAA?rs=1&pid=ImgDetMain",
                             ReleaseDate = new DateTime(2021, 09, 21),
                             ProductCategory = ProductCategory.Laptop,
-                            ManufacturerId = 1,
+                            ManufacturerId = 4,
                         },
 
                     });

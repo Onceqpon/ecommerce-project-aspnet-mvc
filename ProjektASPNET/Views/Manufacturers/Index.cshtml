@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Manufacturer>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Lista Producentów";
+}
+
+<div class= "row">
+    <div class="col-md-8 offset-md-2">
+        <table>
+            <thead>
+                <tr>
+                    <th style="padding: 20px;">@Html.DisplayNameFor(model => model.CompanyLogoURL)</th>
+                    <th style="padding: 20px;">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th style="padding: 20px;">@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>Operacje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="algin-middle">
+                            <img class="rounded-circle" src="@item.CompanyLogoURL" alt="@item.Name" style="max-width: 150px"/>
+                        </td>
+                        <td class="algin-middle" style="padding: 20px;">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="algin-middle" style="padding: 20px;">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="algin-middle" style="padding: 20px;">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-outline-primary mx-1"><i class="bi bi-pencil-square"></i>Edit</a>  |
+                                <a class="btn btn-outline-info mx-1"><i class="bi bi-eye"></i>Details</a>  |
+                                <a class="btn btn-outline-danger mx-1"><i class="bi bi-trash"></i>Delete</a>  |
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
