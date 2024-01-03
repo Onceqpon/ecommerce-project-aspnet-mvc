@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Moq.EntityFrameworkCore" Version="7.0.0.2" />
+  </ItemGroup>
+
 </Project>
