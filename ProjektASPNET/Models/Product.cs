@@ -12,12 +12,14 @@ namespace ProjektASPNET.Models
         public int ProductId { get; set; }
 
         public string Name { get; set; }
+        public string ShortDescription { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
         public string ImageURL { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
 
         public ProductCategory ProductCategory { get; set; }
+        public int AvaibleParts { get; set; }
 
         //Manufakturer
         public int ManufacturerId { get; set; }

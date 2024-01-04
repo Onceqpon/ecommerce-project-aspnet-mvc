@@ -8,7 +8,7 @@
 
 <div class= "row">
     <div class="col-md-8 offset-md-2">
-        <table>
+        <table class ="table">
             <thead>
                 <tr>
                     <th style="padding: 20px;">@Html.DisplayNameFor(model => model.CompanyLogoURL)</th>
@@ -22,7 +22,7 @@
                 {
                     <tr>
                         <td class="algin-middle">
-                            <img class="rounded-circle" src="@item.CompanyLogoURL" alt="@item.Name" style="max-width: 150px"/>
+                            <img class="square" src="@item.CompanyLogoURL" alt="@item.Name" style="max-width: 150px"/>
                         </td>
                         <td class="algin-middle" style="padding: 20px;">
                             @Html.DisplayFor(modelItem => item.Name)
@@ -30,12 +30,10 @@
                         <td class="algin-middle" style="padding: 20px;">
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
-                        <td class="algin-middle" style="padding: 20px;">
-                            <div class="btn-group" role="group">
-                                <a class="btn btn-outline-primary mx-1"><i class="bi bi-pencil-square"></i>Edit</a>  |
-                                <a class="btn btn-outline-info mx-1"><i class="bi bi-eye"></i>Details</a>  |
-                                <a class="btn btn-outline-danger mx-1"><i class="bi bi-trash"></i>Delete</a>  |
-                            </div>
+                        <td class="algin-middle">
+                            <a class="btn btn-outline-primary" style="margin-bottom: 10px;"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a class="btn btn-outline-info" style="margin-bottom: 10px;"><i class="bi bi-eye"></i>Details</a>
+                            <a class="btn btn-danger text-white" ><i class="bi bi-trash"></i>Delete</a>
                         </td>
 
                     </tr>

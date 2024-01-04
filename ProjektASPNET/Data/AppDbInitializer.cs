@@ -53,10 +53,35 @@ namespace ProjektASPNET.Data
                         new Product()
                         {
                             Name = "Surface Go 3",
+                            ShortDescription = "Urządzenie Przenośne",
                             Description = "Najbardziej przenośne urządzenie Surface 2 w 1 z ekranem dotykowym idealnie sprawdzi się w codziennych zadaniach, pracach domowych i rozrywce. Urządzenie Surface Go 3 wykorzystuje wszystko, co najlepsze w systemie Windows 11, jest zoptymalizowane pod kątem obsługi dotykowej i za pomocą pióra cyfrowego, a do tego ma szybszy procesor Intel® Core™ i umożliwia całodzienną pracę na baterii. Może być tabletem lub laptopem i ma wbudowane zabezpieczenia Microsoft.",
                             Price = 2173.99,
-                            ImageURL = "https://th.bing.com/th/id/OIP.zi801rYOccfivC3VRbf2WgAAAA?rs=1&pid=ImgDetMain",
-                            ReleaseDate = new DateTime(2021, 09, 21),
+                            ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
+                            ReleaseYear = 2021,
+                            ProductCategory = ProductCategory.Laptop,
+                            ManufacturerId = 4,
+                        },
+
+                        new Product()
+                        {
+                            Name = "Surface Go 3",
+                            ShortDescription = "Urządzenie Przenośne",
+                            Description = "Najbardziej przenośne urządzenie Surface 2 w 1 z ekranem dotykowym idealnie sprawdzi się w codziennych zadaniach, pracach domowych i rozrywce. Urządzenie Surface Go 3 wykorzystuje wszystko, co najlepsze w systemie Windows 11, jest zoptymalizowane pod kątem obsługi dotykowej i za pomocą pióra cyfrowego, a do tego ma szybszy procesor Intel® Core™ i umożliwia całodzienną pracę na baterii. Może być tabletem lub laptopem i ma wbudowane zabezpieczenia Microsoft.",
+                            Price = 2173.99,
+                            ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
+                            ReleaseYear = 2021,
+                            ProductCategory = ProductCategory.Laptop,
+                            ManufacturerId = 4,
+                        },
+
+                        new Product()
+                        {
+                            Name = "Surface Go 3",
+                            ShortDescription = "Urządzenie Przenośne",
+                            Description = "Najbardziej przenośne urządzenie Surface 2 w 1 z ekranem dotykowym idealnie sprawdzi się w codziennych zadaniach, pracach domowych i rozrywce. Urządzenie Surface Go 3 wykorzystuje wszystko, co najlepsze w systemie Windows 11, jest zoptymalizowane pod kątem obsługi dotykowej i za pomocą pióra cyfrowego, a do tego ma szybszy procesor Intel® Core™ i umożliwia całodzienną pracę na baterii. Może być tabletem lub laptopem i ma wbudowane zabezpieczenia Microsoft.",
+                            Price = 2173.99,
+                            ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
+                            ReleaseYear = 2021,
                             ProductCategory = ProductCategory.Laptop,
                             ManufacturerId = 4,
                         },

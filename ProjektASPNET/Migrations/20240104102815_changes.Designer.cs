@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektASPNET.Data;
 
@@ -10,9 +11,11 @@ using ProjektASPNET.Data;
 namespace ProjektASPNET.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240104102815_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,11 +26,11 @@ namespace ProjektASPNET.Migrations
 
             modelBuilder.Entity("ProjektASPNET.Models.Manufacturer", b =>
                 {
-                    b.Property<int>("ManufacturerId")
+                    b.Property<int>("ManufacturerIds")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ManufacturerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ManufacturerIds"));
 
                     b.Property<string>("CompanyLogoURL")
                         .IsRequired()
@@ -41,7 +44,7 @@ namespace ProjektASPNET.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ManufacturerId");
+                    b.HasKey("ManufacturerIds");
 
                     b.ToTable("Manufacturers");
                 });
@@ -68,6 +71,9 @@ namespace ProjektASPNET.Migrations
                     b.Property<int>("ManufacturerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ManufacturerIds")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -87,7 +93,7 @@ namespace ProjektASPNET.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("ManufacturerId");
+                    b.HasIndex("ManufacturerIds");
 
                     b.ToTable("Products");
                 });
@@ -96,7 +102,7 @@ namespace ProjektASPNET.Migrations
                 {
                     b.HasOne("ProjektASPNET.Models.Manufacturer", "Manufacturer")
                         .WithMany("Products")
-                        .HasForeignKey("ManufacturerId")
+                        .HasForeignKey("ManufacturerIds")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

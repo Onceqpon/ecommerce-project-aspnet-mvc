@@ -5,7 +5,7 @@ namespace ProjektASPNET.Models
     public class Manufacturer
     {
         [Key]
-        public int ManufacturerIds{ get; set; }
+        public int ManufacturerId{ get; set; }
 
         [Display(Name = "Logo Producenta")]
         public string CompanyLogoURL { get; set; }

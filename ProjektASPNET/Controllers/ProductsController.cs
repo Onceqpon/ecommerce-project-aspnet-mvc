@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjektASPNET.Data;
+using ProjektASPNET.Models;
 
 namespace ProjektASPNET.Controllers
 {
@@ -14,8 +15,11 @@ namespace ProjektASPNET.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allProducts = await _context.Products.ToListAsync();
-            return View();
+            var products = _context.Products
+           .Include(p => p.Manufacturer) // Wczytaj producenta, jeśli jest to wymagane
+           .ToList();
+
+            return View(products);
         }
     }
 }
