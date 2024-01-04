@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Lista Produktów";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 440px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white" style="background-color: gray;">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Name
+                                    <a class="text-white float-end"><i class="bi-pencil-square"></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.ImageURL" width="100%" alt>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.ShortDescription</p>
+                            <p class="card-text">Rok Produkcji: @item.ReleaseYear</p>
+                            <p class="card-text">Producent: @item.Manufacturer.Name</p>
+                            <p class="card-text">Kategoria: @item.ProductCategory</p>
+                            <p class="card-text">
+                                <b>Dostępne sztuki:</b>
+                                @item.AvaibleParts
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div>
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-end m-3"><i class="bi bi-eye-fill">Szczegóły</i></a>
+                                <a class="btn btn-success text-white m-3"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@item.Price zł)</i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
