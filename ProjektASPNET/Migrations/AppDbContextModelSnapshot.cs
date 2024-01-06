@@ -23,11 +23,11 @@ namespace ProjektASPNET.Migrations
 
             modelBuilder.Entity("ProjektASPNET.Models.Manufacturer", b =>
                 {
-                    b.Property<int>("ManufacturerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ManufacturerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CompanyLogoURL")
                         .IsRequired()
@@ -41,7 +41,7 @@ namespace ProjektASPNET.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ManufacturerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Manufacturers");
                 });

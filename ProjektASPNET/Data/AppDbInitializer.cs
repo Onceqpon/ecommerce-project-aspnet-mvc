@@ -59,7 +59,7 @@ namespace ProjektASPNET.Data
                             ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
                             ReleaseYear = 2021,
                             ProductCategory = ProductCategory.Laptop,
-                            ManufacturerId = 4,
+                            ManufacturerId = 1,
                         },
 
                         new Product()
@@ -71,7 +71,7 @@ namespace ProjektASPNET.Data
                             ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
                             ReleaseYear = 2021,
                             ProductCategory = ProductCategory.Laptop,
-                            ManufacturerId = 4,
+                            ManufacturerId = 1,
                         },
 
                         new Product()
@@ -83,7 +83,7 @@ namespace ProjektASPNET.Data
                             ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
                             ReleaseYear = 2021,
                             ProductCategory = ProductCategory.Laptop,
-                            ManufacturerId = 4,
+                            ManufacturerId = 1,
                         },
 
                     });
