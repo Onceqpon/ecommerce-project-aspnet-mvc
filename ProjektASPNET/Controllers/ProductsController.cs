@@ -2,52 +2,42 @@
 using Microsoft.EntityFrameworkCore;
 using ProjektASPNET.Data;
 using ProjektASPNET.Data.Enums;
+using ProjektASPNET.Data.Services;
 using ProjektASPNET.Models;
 
 namespace ProjektASPNET.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProductService _service;
 
-        public ProductsController(AppDbContext context)
+        public ProductsController(IProductService service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = _context.Products
-           .Include(p => p.Manufacturer)
-           .OrderBy(p => p.Name)
-           .ToList();
+            var AllProduct = await _service.GetAllAsync(n => n.Manufacturer);
 
-            return View(products);
+            return View(AllProduct);
         }
-
+        
+        public async Task<IActionResult> Details(int id)
+        {
+            var movieDetail = await _service.GetProductByIdAsync(id);
+            return View(movieDetail);
+        }
         public IActionResult IndexByCategory(ProductCategory? category)
         {
-            int selectedCategoryValue = (int)(category ?? 0);
 
-            var productsInSelectedCategory = _context.Products
-                .Include(p => p.Manufacturer)
-                .Where(p => (int)p.ProductCategory == selectedCategoryValue)
-                .OrderBy(p => p.Name)
-                .ToList();
-
-            return View("Index", productsInSelectedCategory);
+            return View("Index");
         }
 
         public IActionResult Search(IFormCollection formCollection)
         {
-            string searchText = formCollection["search"];
+           
 
-            var productsMatchingSearch = _context.Products
-                .Include(p => p.Manufacturer)
-                .Where(p => p.Name.Contains(searchText) || p.Description.Contains(searchText)) // Szukaj fragmentu w polu Name lub Description
-                .OrderBy(p => p.Name)
-                .ToList();
-
-            return View("Index", productsMatchingSearch);
+            return View("Index");
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace ProjektASPNET.Data.Base
 {
@@ -14,6 +15,7 @@ namespace ProjektASPNET.Data.Base
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
+            _context.SaveChanges();
         }
 
         public async Task DeleteAsync(int id)
@@ -29,6 +31,13 @@ namespace ProjektASPNET.Data.Base
             return result;
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperties) => current.Include(includeProperties));
+            return await query.ToListAsync();
+        }
+
         public  async Task<T> GetByIdAsync(int id)
         {
             var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
@@ -40,5 +49,6 @@ namespace ProjektASPNET.Data.Base
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Modified;
         }
+
     }
 }

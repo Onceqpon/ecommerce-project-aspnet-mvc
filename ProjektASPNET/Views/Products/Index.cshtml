@@ -40,7 +40,7 @@
                     <div class="col-md-12">
                         <div>
                             <p class="card-text">
-                                <a class="btn btn-outline-primary float-end m-3" ><i class="bi bi-eye-fill">Szczegóły</i></a>
+                                <a class="btn btn-outline-primary float-end m-3" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-eye-fill">Szczegóły</i></a>
                                 <a class="btn btn-success text-white m-3"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@item.Price zł)</i></a>
                             </p>
                         </div>

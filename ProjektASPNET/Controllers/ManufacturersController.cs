@@ -25,11 +25,14 @@ namespace ProjektASPNET.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("CompanyLogoURL,Name,Description")]Manufacturer manufacturer)
+        public async Task<IActionResult> Create(Manufacturer manufacturer)
         {
-            if (!ModelState.IsValid) return View(manufacturer);
-            await _service.AddAsync(manufacturer);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                await _service.AddAsync(manufacturer);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(manufacturer);
         }
     }
 }
