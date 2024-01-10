@@ -7,6 +7,8 @@ namespace ProjektASPNET.Data.ViewModel
 {
     public class NewProductVM
     {
+        public int Id { get; set; }
+
         [Display(Name = "Nazwa produktu")]
         [Required(ErrorMessage = "Nazwa jest wymagana")]
         public string Name { get; set; }

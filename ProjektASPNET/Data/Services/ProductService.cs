@@ -51,5 +51,26 @@ namespace ProjektASPNET.Data.Services
             
             return productDetails;
         }
+
+        public async Task UpdateProductAsync(NewProductVM data)
+        {
+
+            var dbProduct = await _context.Products.FirstOrDefaultAsync(n => n.Id == data.Id);
+
+            if (dbProduct != null)
+            {
+                dbProduct.Name = data.Name;
+                dbProduct.Description = data.Description;
+                dbProduct.ShortDescription = data.ShortDescription;
+                dbProduct.ImageURL = data.ImageURL;
+                dbProduct.ManufacturerId = data.ManufacturerId;
+                dbProduct.ReleaseYear = data.ReleaseYear;
+                dbProduct.AvaibleParts = data.AvaibleParts;
+                dbProduct.Price = data.Price;
+                dbProduct.ProductCategory = data.ProductCategory;
+
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

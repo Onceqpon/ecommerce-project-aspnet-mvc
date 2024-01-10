@@ -9,5 +9,6 @@ namespace ProjektASPNET.Data.Services
         Task<Product> GetProductByIdAsync(int id);
         Task<ProductDropdownsVM> GetNewMovieDropdonsValue();
         Task AddNewProductAsync(NewProductVM data);
+        Task UpdateProductAsync(NewProductVM data);
     }
 }
