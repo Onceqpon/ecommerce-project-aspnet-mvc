@@ -1,8 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!DOCTYPE html>
+
+<head>
+    <title>Karuzela Zdjęć</title>
+</head>
+
+<div id="carouselExample" class="carousel slide" data-ride="carousel">
+    <h5 class="d-flex justify-content-center">Najczęściej kupowane</h5>
+    <div class="carousel-inner">
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="carousel-item @(item == Model.First() ? "active" : "")">
+                    <div class="row" >
+                        <div class="col-sm">
+                            <img src="@item.ImageURL" class="d-block" style="max-height: 250px;" alt="@item.Name" />
+                        </div>
+                        <div class="col-sm">
+                            @item.Name
+                            @item.Description
+                            <a class="btn btn-outline-primary float-end m-3" href="@Url.Action("Details", "Products", new { id = item.Id })"><i class="bi bi-eye-fill"></i>Szczegóły</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+<script>
+    // JavaScript do zmieniania slajdów karuzeli
+    let currentImage = 0;
+    const images = document.querySelectorAll('.carousel-item');
+
+    function changeImage() {
+        images[currentImage].classList.remove('active');
+        currentImage = (currentImage + 1) % images.length;
+        images[currentImage].classList.add('active');
+    }
+
+    setInterval(changeImage, 5000); // Zmieniaj slajdy co 5 sekund (5000 ms)
+</script>

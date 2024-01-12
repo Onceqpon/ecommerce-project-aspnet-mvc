@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentAssertions.Common;
+using Microsoft.AspNetCore.Mvc;
+using ProjektASPNET.Data.Services;
 using ProjektASPNET.Models;
 using System.Diagnostics;
 
@@ -6,16 +8,18 @@ namespace ProjektASPNET.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var AllProduct = await _service.GetAllAsync();
+
+            return View(AllProduct);
         }
 
         public IActionResult Privacy()

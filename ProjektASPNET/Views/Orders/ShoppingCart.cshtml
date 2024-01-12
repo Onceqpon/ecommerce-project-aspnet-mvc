@@ -1,0 +1,67 @@
+﻿@using ProjektASPNET.Data.ViewModel;
+@model ShoppingCartVM
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Koszyk";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="text-center">
+            <h2>Twój Koszyk</h2>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Wybrana Ilość</th>
+                    <th>Produkt</th>
+                    <th>Cena</th>
+                    <th>Suma</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                {
+                    <tr>
+                        <td class="algin-middle">@item.Amount</td>
+                        <td class="algin-middle">@item.Product.Name</td>
+                        <td class="algin-middle">@item.Product.Price.ToString("c")</td>
+                        <td class="algin-middle">@((item.Amount*item.Product.Price).ToString("c"))</td>
+                        <td class="algin-middle">
+                            <a class="text-center" asp-controller="Orders" asp-action="RemoveToShoppingCart" asp-route-id="@item.Product.Id">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
+
+                            <a class="text-success" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Product.Id">
+                                <i class="bi bi-cart-plus"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td><b>Łącznie:</b></td>
+                    <td>@Model.ShoppingCartTotal.ToString("c")</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <div class="btn group">
+                <a class="btn btn-outline-primary"  asp-asp-controller="Orders" asp-action="CompleteOrder">
+                    Zamów
+                </a>
+                <a class="btn btn-outline-success" asp-controller="Products" asp-action="Index">
+                    Dodaj Więcej przedmiotów
+                </a>
+            </div>
+        </div>
+    </div>
+
+</di>

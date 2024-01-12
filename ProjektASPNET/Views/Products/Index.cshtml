@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@item.ImageURL" width="100%" alt>
+                        <img src="@item.ImageURL" width="100%" alt="@item.Name">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -41,7 +41,7 @@
                         <div>
                             <p class="card-text">
                                 <a class="btn btn-outline-primary float-end m-3" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-eye-fill">Szczegóły</i></a>
-                                <a class="btn btn-success text-white m-3"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@item.Price zł)</i></a>
+                                <a class="btn btn-success text-white m-3" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@item.Price zł)</i></a>
                             </p>
                         </div>
                     </div>

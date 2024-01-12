@@ -40,10 +40,25 @@
                         </li>
                     </ul>
                     <nav class="navbar navbar-dark bg-dark">
-                        <form class="form-inline" method="post" asp-controller="Products" asp-action="Filter">
+                        <form class="form-inline" method="post" asp-controller="Products" asp-action="Filter" style="margin-right: 10px;">
                             <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Czego szukasz?" aria-label="Czego szukasz?">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
                         </form>
+                        <ul class="navbar-nav">
+                            @await Component.InvokeAsync("ShoppingCartSummary")
+                        </ul>
+
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-badge"></i>Witaj,
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profile-btn">
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                    <i class="bi-list"></i>Zamówienia
+                                </a>
+                            </ul>
+
+                        </div>
                     </nav>
                 </div>
             </div>
