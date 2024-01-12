@@ -80,7 +80,7 @@ namespace ProjektASPNET.Data
                             ShortDescription = "Telefon",
                             Description = "Litera „I” oznacza imponujące zdjęcia. Smartfon Xperia PRO-I jest wyposażony w rewolucyjny aparat, który łączy w sobie profesjonalną jakość zdjęć z możliwościami komunikacji charakterystycznymi dla smartfonów. Dzięki temu możesz wykazywać się kreatywnością zawsze i wszędzie.",
                             Price = 8399.99,
-                            ImageURL = "https://polsoft.pl/microsoft-surface/wp-content/uploads/2022/05/tablet-microsoft-surface-go-3-czarny-matowy-z-klawiatura-8VI-00016.jpg",
+                            ImageURL = "https://fotoforma.pl/userdata/public/gfx/122850/sony-xperia-pro-i-512-gb-5g_1.jpg",
                             ReleaseYear = 2022,
                             ProductCategory = ProductCategory.Telefon,
                             ManufacturerId = 2,
