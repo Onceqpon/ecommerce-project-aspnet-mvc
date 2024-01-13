@@ -15,7 +15,16 @@
             <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
                 <i class="bi-list"></i>Zamówienia
             </a>
-            <a id="manage" class="nav-link text-dark dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Ustawienia</a>
+                <a id="manage" class="nav-link text-dark dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <i class="bi-feather"></i>Ustawienia
+            </a>
+            @if(User.IsInRole("Admin"))
+                {
+                    <a class="dropdown-item" asp-controller="Manufacturers" asp-action="Index">
+                        <i class="bi-list"></i>Producenci
+                    </a>
+                }
+                
         </ul>
     </div>
 

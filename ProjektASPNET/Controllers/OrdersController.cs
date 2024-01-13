@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjektASPNET.Data.Cart;
 using ProjektASPNET.Data.Services;
@@ -23,12 +24,22 @@ namespace ProjektASPNET.Controllers
 
         public async Task<ActionResult> Index()
         {
-            string userId = _userManager.GetUserId(User);
-            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
-            var user = await _userManager.FindByIdAsync(userId);
 
-            string userEmailAddress = user.Email;
-            return View(orders);
+            if (User.IsInRole("Admin"))
+            {
+                var allOrders = await _ordersService.GetAllOrdersAsync();
+                return View(allOrders);
+            }
+            else if (User.IsInRole("User"))
+            {
+                string userId = _userManager.GetUserId(User);
+                var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+                var user = await _userManager.FindByIdAsync(userId);
+                string userEmailAddress = user.Email;
+                return View(orders);
+            }
+
+            return View();
         }
 
         public IActionResult ShoppingCart()

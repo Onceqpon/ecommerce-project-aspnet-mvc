@@ -11,6 +11,12 @@ namespace ProjektASPNET.Data.Services
         {
             _context = context;
         }
+
+        public async Task<List<Order>> GetAllOrdersAsync()
+        {
+            return await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Product).ToListAsync();
+        }
+
         public Task<List<Order>> GetOrdersByUserIdAsync(string userId)
         {
             var orders = _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Product).Where(n => n.UserId == userId).ToListAsync();

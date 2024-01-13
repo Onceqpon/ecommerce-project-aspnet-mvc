@@ -28,6 +28,7 @@ namespace ProjektASPNET.Areas.Identity.Pages.Account
         private readonly IUserStore<IdentityUser> _userStore;
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
@@ -133,6 +134,10 @@ namespace ProjektASPNET.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    
+                    IdentityResult roleresult = await _userManager.AddToRoleAsync(user, "User");
+
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

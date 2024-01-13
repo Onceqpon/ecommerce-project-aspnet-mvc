@@ -19,6 +19,12 @@ namespace ProjektASPNET.Controllers
             return View(data);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var manufaturer = await _service.GetByIdAsync(id);
+            return View(manufaturer);
+        }
+
         public IActionResult Create()
         {
             return View();
