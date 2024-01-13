@@ -1,4 +1,9 @@
 ﻿@using ProjektASPNET.Data.Enums;
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<IdentityUser> SingInManager
+@inject UserManager<IdentityUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,15 +53,7 @@
                             @await Component.InvokeAsync("ShoppingCartSummary")
                         </ul>
 
-                        <div class="dropdown">
-                            <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-badge"></i>Witaj,
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="profile-btn">
-                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                                    <i class="bi-list"></i>Zamówienia
-                                </a>
-                            </ul>
+                        
                             <partial name="_LoginPartial"></partial>
 
                         </div>

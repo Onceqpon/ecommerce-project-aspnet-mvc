@@ -35,7 +35,7 @@ namespace ProjektASPNET.Areas.Identity.Pages.Account
             {
                 // This needs to be a redirect so that the browser performs a new
                 // request and the identity for the user gets updated.
-                return RedirectToPage();
+                return Content("<div class=\"bg-primary text-white\">User logged out.</div>", "text/html");
             }
         }
     }

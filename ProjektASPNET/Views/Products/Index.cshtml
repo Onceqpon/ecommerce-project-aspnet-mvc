@@ -1,4 +1,10 @@
-﻿@model IEnumerable<Product>
+﻿@using ProjektASPNET.Data.Enums;
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<IdentityUser> SingInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<Product>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -51,4 +57,7 @@
     }
 </div>
 
-@await Html.PartialAsync("_CreateItem", "Create");
+@if(User.IsInRole("Admin"))
+{
+    @await Html.PartialAsync("_CreateItem", "Create");
+}
