@@ -13,7 +13,5 @@
         Konsola,
         Smartwatch,
         Akcesoria,
-        Muzyka,
-
     }
 }
