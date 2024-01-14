@@ -30,12 +30,12 @@ namespace ProjektASPNET.Controllers
             var manufaturer = await _service.GetByIdAsync(id);
             return View(manufaturer);
         }
-        [Authorize("Admin")]
+
         public IActionResult Create()
         {
             return View();
         }
-        [Authorize("Admin")]
+
         [HttpPost]
         public async Task<IActionResult> Create(Manufacturer manufacturer)
         {
@@ -46,7 +46,7 @@ namespace ProjektASPNET.Controllers
             }
             return View(manufacturer);
         }
-        [Authorize("Admin")]
+
         public async Task<IActionResult> Edit(int id)
         {
             var manufacturerDetails = await _service.GetByIdAsync(id);
@@ -67,7 +67,7 @@ namespace ProjektASPNET.Controllers
 
             return View(response);
         }
-        [Authorize("Admin")]
+
         [HttpPost]
         public async Task<IActionResult> Edit(int id, NewManufacturerVM manufacturerVM)
         {
@@ -109,10 +109,36 @@ namespace ProjektASPNET.Controllers
                 return NotFound();
             }
 
+            // Sprawdź, czy istnieją powiązane klucze obce (na przykład relacja z innymi encjami)
+            var hasRelatedData = CheckForRelatedData(manufacturer);
+
+            if (hasRelatedData)
+            {
+                // Jeśli istnieją powiązane klucze obce, wyświetl komunikat i przekieruj do Index
+                TempData["ErrorMessage"] = "Nie można usunąć producenta, ponieważ istnieją powiązane dane.";
+                return RedirectToAction("Index");
+            }
+
             _context.Manufacturers.Remove(manufacturer);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        private bool CheckForRelatedData(Manufacturer manufacturer)
+        {
+
+            var hasRelatedProducts = _context.Products.Any(p => p.ManufacturerId == manufacturer.Id);
+
+            // Jeśli istnieją powiązane produkty, zwróć true.
+            if (hasRelatedProducts)
+            {
+                return true;
+            }
+
+            // Tutaj możesz dodać inne sprawdzanie powiązanych kluczy obcych z innymi tabelami, jeśli istnieją.
+
+            return false;
         }
 
 
