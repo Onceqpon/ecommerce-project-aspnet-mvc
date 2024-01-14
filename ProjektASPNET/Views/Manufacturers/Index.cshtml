@@ -36,9 +36,11 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td class="algin-middle">
-                            <a class="btn btn-outline-primary" style="margin-bottom: 10px;"><i class="bi bi-pencil-square"></i>Edytuj</a>
+                            <a class="btn btn-outline-primary" style="margin-bottom: 10px;" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edytuj</a>
                             <a class="btn btn-outline-info" style="margin-bottom: 10px;" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Szczegóły</a>
-                            <a class="btn btn-danger text-white" ><i class="bi bi-trash"></i>Usuń</a>
+                            <a class="btn btn-danger text-white" asp-controller="Manufacturers" asp-action="Delete" asp-route-id="@item.Id" )">
+                                <i class="bi bi-trash"></i> Usuń
+                            </a>
                         </td>
 
                     </tr>

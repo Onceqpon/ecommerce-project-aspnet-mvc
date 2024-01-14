@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjektASPNET.Data;
@@ -30,13 +31,14 @@ namespace ProjektASPNET.Controllers
             return View(movieDetail);
         }
 
+        [Authorize("Admin")]
         public async Task<IActionResult> Create()
         {
             var productDropdownsData = await _service.GetNewMovieDropdonsValue();
             ViewBag.Manufacturers = new SelectList(productDropdownsData.Manufacturers, "Id", "Name");
             return View();
         }
-
+        [Authorize("Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(NewProductVM product)
         {
@@ -50,7 +52,7 @@ namespace ProjektASPNET.Controllers
             await _service.AddNewProductAsync(product);
             return RedirectToAction("Index");
         }
-
+        [Authorize("Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var productDetails = await _service.GetProductByIdAsync(id);
@@ -77,7 +79,7 @@ namespace ProjektASPNET.Controllers
 
             return View(response);
         }
-
+        [Authorize("Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, NewProductVM product)
         {

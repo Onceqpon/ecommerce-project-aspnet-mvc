@@ -52,6 +52,17 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "manufacturers",
+        pattern: "Manufacturers/{action}/{id?}",
+        defaults: new { controller = "Manufacturers" });
+});
+
 AppDbInitializer.Seed(app);
 
 using (var scope = app.Services.CreateScope())

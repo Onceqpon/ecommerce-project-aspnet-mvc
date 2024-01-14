@@ -25,7 +25,7 @@
                     <p class="card-text">Rok Produkcji: @Model.ReleaseYear</p>
                     <p class="card-text">
                         <b>Producer: </b>
-                        <a asp-asp-controller="Manufacturer" asp-action="Details" asp.route-id="@Model.ManufacturerId">
+                        <a asp-controller="Manufacturers" asp-action="Details" asp-route-id="@Model.ManufacturerId">
                             @Model.Manufacturer.Name
                         </a>
                     </p>
@@ -36,7 +36,14 @@
                     </p>
                     <div>
                         <p class="card-text">
-                            <a class="btn btn-success text-white m-3" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@Model.Price zł)</i></a>
+                             @if (User.IsInRole("User") || User.IsInRole("Admin"))
+                             {
+                                <a class="btn btn-success text-white m-3" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus">Dodaj Do Koszyka (@Model.Price zł)</i></a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-success text-white m-3"><i class="bi bi-cart-plus">Musisz Się Zalogować (@Model.Price zł)</i></a>
+                            }
                             <a class="btn btn-outline-primary float-end m-3" asp-action="Index"><i class="bi bi-eye-fill">Wróć do listy</i></a>
                         </p>
                     </div>

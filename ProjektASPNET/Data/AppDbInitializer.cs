@@ -183,8 +183,8 @@ namespace ProjektASPNET.Data
                         },
 
                     });
-                    context.SaveChanges();
 
+                    context.SaveChanges();
                 }
 
             }
